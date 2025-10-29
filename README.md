@@ -8,7 +8,7 @@
 AL_PORTS=34031-34034 RE_PORT=443 AL_DOMAIN=my.domain.com RE_SNI=www.java.com bash <(curl -fsSL https://raw.githubusercontent.com/hide3110/docker-xray/main/install.sh)
 ```
 ### 安装指定版本号
-可以在脚本前添加SB_VER变量，如XRAY_VER=25.10.15
+可以在脚本前添加SB_VER变量，如XRAY_VER=25.10.15   或XRAY_VER=latest
 ```
 XRAY_VER=25.10.15 AL_PORTS=34031-34034 RE_PORT=443 AL_DOMAIN=my.domain.com RE_SNI=www.java.com bash <(curl -fsSL https://raw.githubusercontent.com/hide3110/docker-xray/main/install.sh)
 ```
