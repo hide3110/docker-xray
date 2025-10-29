@@ -14,7 +14,7 @@ set -e
 BASE_DIR=/opt/xray
 CONFIG_DIR="$BASE_DIR/config"
 DATA_DIR="$BASE_DIR/data"
-ACME_DIR="$DATA_DIR/acme"
+ACME_DIR=/opt/sing-box/data/acme
 ACME_PROVIDER_DIR="acme-v02.api.letsencrypt.org-directory"
 CERT_DIR_CONTAINER="/opt/certs/certificates/$ACME_PROVIDER_DIR/$AL_DOMAIN"
 CERT_FILE="$CERT_DIR_CONTAINER/$AL_DOMAIN.crt"
