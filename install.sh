@@ -148,7 +148,7 @@ parse_ports() {
     PORT_SS=$PORT_START
     PORT_TROJAN=$((PORT_START + 1))
     PORT_VMESS=$((PORT_START + 2))
-    PORT_VLESS_TLS=$((PORT_START + 3))
+    PORT_VLESS=$((PORT_START + 3))
 
     case $RE_PORT in
         ''|*[!0-9]*)
