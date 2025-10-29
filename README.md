@@ -1,33 +1,20 @@
-# sing-box脚本
+# xray docker安装脚本
 
-这个 Bash 脚本可以帮助你在 alpine 系统快速部署 sing-box 代理服务器。
+此脚本可以帮助你在 Debian/Ubuntu 和 Alpine 系统通过 docker 快速部署 xray 代理服务器。
 
-## 一、通过 wget 安装
-### 一键脚本自定义
-自定义端口参数如：TR_PORT=8443 VL_PORT=9443 VL_SNI=www.microsoft.com (此为reality协议证书地址)，使用时请自行定义此参数！
+### 通过一键脚本自定义安装
+自定义端口参数如：AL_PORTS=34031-34034 (也可用 AL_PORTS=34031,34032,34033,34034 来表达) RE_PORT=443 (此为reality端口，注意端口占用问题) AL_DOMAIN=my.domain.com (服务器解析的域名) RE_SNI=www.java.com (此为reality协议证书地址)，使用时请自行定义此参数！
 ```bash
-TR_PORT=8443 VL_PORT=9443 VL_SNI=www.microsoft.com wget -O - https://raw.githubusercontent.com/hide3110/sb-alpine/main/install.sh | sh
+AL_PORTS=34031-34034 RE_PORT=443 AL_DOMAIN=my.domain.com RE_SNI=www.java.com bash <(curl -fsSL https://raw.githubusercontent.com/hide3110/docker-xray/main/install.sh)
 ```
-### 指定版本号
-可以脚本最后添加sing-box版本号，如1.11.4
+### 安装指定版本号
+可以在脚本前添加SB_VER变量，如XRAY_VER=25.10.15
 ```
-TR_PORT=8443 VL_PORT=9443 VL_SNI=www.microsoft.com wget -O - https://raw.githubusercontent.com/hide3110/sb-alpine/main/install.sh | sh -s 1.11.4
+XRAY_VER=25.10.15 AL_PORTS=34031-34034 RE_PORT=443 AL_DOMAIN=my.domain.com RE_SNI=www.java.com bash <(curl -fsSL https://raw.githubusercontent.com/hide3110/docker-xray/main/install.sh)
 ```
-
-## 二、通过 curl 安装
-### 一键脚本自定义
-```bash
-TR_PORT=8443 VL_PORT=9443 VL_SNI=www.microsoft.com curl -fsSL https://raw.githubusercontent.com/hide3110/sb-alpine/main/install.sh | sh
-```
-### 指定版本号
-```
-TR_PORT=8443 VL_PORT=9443 VL_SNI=www.microsoft.com curl -fsSL https://raw.githubusercontent.com/hide3110/sb-alpine/main/install.sh | sh -s 1.11.4
-```
-
 
 ## 详细说明
-
-- 脚本使用的自签 TLS 证书（用于 Trojan）
-- 此脚本仅安装了Trojan和reality两个协议
-
-
+- docker相关文件路径：/opt/xray
+- 脚本使用的acme申请证书
+- 默认安装xray 25.7.26版本，可自定版本安装，需要自行修改配置文件
+- 此脚本仅安装了ss、trojan、vmess、vless和reality五个协议
